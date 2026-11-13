@@ -531,7 +531,6 @@ section.p2::before{content:"";position:absolute;inset:-28px -22px;z-index:-1;bor
 /* Báo cáo, ghi chú */
 .say{background:linear-gradient(90deg,#fff7e3,#fffaf0);border-left:4px solid var(--amber)}
 .report-head{background:linear-gradient(90deg,#12214a,#223a8c)}
-.cta{background:linear-gradient(135deg,#0c1738,#1d3a8a 70%,#3b2a9a)}
 .main{overflow-x:clip}
 @media print{body{background:#fff}.hero::after,section.p2::before{display:none}.viewbar{position:static}}
 
@@ -615,9 +614,39 @@ section.p2::before{content:"";position:absolute;inset:-28px -22px;z-index:-1;bor
 @media (max-width:640px){.ring-row{grid-template-columns:1fr;justify-items:center}.ring-list{width:100%}}
 @media print,(prefers-reduced-motion:reduce){.ring-prog{stroke-dashoffset:0!important}.bub,.crm{opacity:1!important;transform:none!important}.typing{display:none}}
 @media print{#neural{display:none}}
+
+/* ===== Nền tổng thể kiểu AI + sửa khối CTA ===== */
+.cta{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:radial-gradient(520px 220px at 100% 0,rgba(22,184,212,.28),transparent 70%),linear-gradient(135deg,#0c1738,#1d3a8a 70%,#3b2a9a);box-shadow:0 24px 56px rgba(23,48,126,.28)}
+.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:30px 30px;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000);mask-image:linear-gradient(90deg,transparent 35%,#000)}
+.cta>*{position:relative}
+.cta .k{color:#ffc24d}
+.cta h4{color:#fff;font-size:20px}
+.cta p{color:#c6d3f5}
+.cta p strong{color:#ffc24d}
+.foot{border-top:0;position:relative}
+.foot::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#5b4bdb,#16b8d4,transparent)}
+.main{position:relative;z-index:1}
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
+.aurora i:nth-child(1){width:560px;height:560px;left:-120px;top:8%;background:rgba(44,91,224,.20);animation:drift1 26s ease-in-out infinite}
+.aurora i:nth-child(2){width:520px;height:520px;right:-140px;top:34%;background:rgba(91,75,219,.20);animation:drift2 32s ease-in-out infinite}
+.aurora i:nth-child(3){width:480px;height:480px;left:34%;bottom:-160px;background:rgba(22,184,212,.18);animation:drift3 29s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(160px,120px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-180px,-100px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(140px,-120px)}}
+#bg-neural{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
+#cglow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;pointer-events:none;z-index:0;opacity:0;transition:opacity .8s ease;background:radial-gradient(circle,rgba(91,75,219,.16),rgba(22,184,212,.07) 42%,transparent 68%);will-change:transform}
+#cglow.on{opacity:1}
+.sec-head h2::after{content:"";display:block;height:3px;width:56px;margin-top:8px;border-radius:3px;background:var(--grad-ai);transition:width 1.4s ease .35s}
+.js .reveal:not(.in) .sec-head h2::after,.js .sec-head.reveal:not(.in) h2::after{width:0}
+@media (max-width:640px){.aurora i{filter:blur(60px)}.aurora i:nth-child(3){display:none}}
+@media print,(prefers-reduced-motion:reduce){.aurora i{animation:none}#cglow,#bg-neural{display:none}}
 </style>
 </head>
 <body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="bg-neural" aria-hidden="true"></canvas>
+<div id="cglow" aria-hidden="true"></div>
 
 <div class="rp" id="rp"></div>
 
@@ -1871,6 +1900,62 @@ Tuyệt đối KHÔNG tự bịa giá hoặc thông số ngoài tài liệu.
       }
     }
     run();
+  })();
+
+  /* 9. Nền tổng thể: mạng nơ-ron toàn trang phản ứng với con trỏ + vầng sáng theo chuột */
+  (function bgNeural() {
+    var c = $('#bg-neural'); if (!c || reduce) return;
+    var x = c.getContext('2d'), W = 0, H = 0, pts = [], mouse = { x: -999, y: -999 }, vis = true;
+    function size() {
+      var d = Math.min(2, window.devicePixelRatio || 1);
+      W = window.innerWidth; H = window.innerHeight; c.width = W * d; c.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
+      var n = Math.round(Math.min(70, W * H / 20000)); pts = [];
+      for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .2, vy: (Math.random() - .5) * .2 });
+    }
+    window.addEventListener('pointermove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    document.addEventListener('visibilitychange', function () { vis = !document.hidden; });
+    function step() {
+      if (vis) {
+        x.clearRect(0, 0, W, H);
+        for (var i = 0; i < pts.length; i++) {
+          var p = pts[i]; p.x += p.vx; p.y += p.vy;
+          if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+          if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+          for (var j = i + 1; j < pts.length; j++) {
+            var q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d2 = dx * dx + dy * dy;
+            if (d2 < 17000) {
+              x.strokeStyle = 'rgba(91,75,219,' + (0.16 * (1 - d2 / 17000)).toFixed(3) + ')';
+              x.lineWidth = 1; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(q.x, q.y); x.stroke();
+            }
+          }
+          var mx = p.x - mouse.x, my = p.y - mouse.y, md = mx * mx + my * my;
+          if (md < 30000) {
+            x.strokeStyle = 'rgba(22,184,212,' + (0.42 * (1 - md / 30000)).toFixed(3) + ')';
+            x.lineWidth = 1.2; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(mouse.x, mouse.y); x.stroke();
+          }
+          x.fillStyle = 'rgba(44,91,224,.38)'; x.beginPath(); x.arc(p.x, p.y, 1.8, 0, 6.2832); x.fill();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+    size(); step();
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(size, 200); });
+  })();
+
+  (function cursorGlow() {
+    var g = $('#cglow');
+    if (!g || reduce || !window.matchMedia || !matchMedia('(hover:hover)').matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, run = false;
+    function loop() {
+      cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      g.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
+      if (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.5) requestAnimationFrame(loop); else run = false;
+    }
+    window.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY; g.classList.add('on');
+      if (!run) { run = true; requestAnimationFrame(loop); }
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () { g.classList.remove('on'); });
   })();
 
   /* 6. Copy summary as Markdown */
