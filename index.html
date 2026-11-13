@@ -205,6 +205,20 @@ svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-l
 .stack>.node::before{content:"";position:absolute;left:-26px;top:50%;width:26px;height:2px;margin-top:-1px;background:var(--flow)}
 .stack>.node::after{content:"";position:absolute;left:-12px;top:50%;width:8px;height:8px;border-top:2px solid var(--flow);border-right:2px solid var(--flow);transform:translateY(-50%) rotate(45deg)}
 .flow.fork{align-items:center}
+.when{display:inline-block;padding:2px 9px;border-radius:99px;background:var(--navy);color:#ffc24d;font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:6px}
+.tool{display:block;margin-top:8px;font-size:11.5px;font-weight:600;color:var(--blue)}
+.note.warn{background:var(--rose-soft);border-color:var(--rose-line)}
+.note.warn svg{color:var(--rose)}
+.sec-body>.note{margin-bottom:0}
+.list.r li .li{background:var(--rose-soft);color:var(--rose)}
+.stackcol{display:flex;flex-direction:column;gap:18px}
+.report{border:1px solid var(--line-2);border-radius:16px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
+.report-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--navy);color:#fff;font-size:13px;font-weight:600}
+.report-head svg{color:#ffc24d;font-size:16px}
+.report-head small{margin-left:auto;color:#9fb4e8;font-weight:500}
+.report-body{padding:16px;display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.5}
+.report-body b{display:block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+.cap2{margin-top:14px;font-size:13px;color:var(--muted)}
 .stack>.node{flex-direction:row;align-items:center}
 .step-no{position:absolute;top:-9px;left:12px;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--navy);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;line-height:1}
 
@@ -385,6 +399,68 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none}
 }
+
+/* ===== Phần II: chi tiết kỹ thuật ===== */
+.steps li.navsep{margin:14px 10px 8px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.steps li.navsep::before{display:none!important}
+.steps li:has(+ li.navsep)::before{display:none!important}
+.steps .dot.t{border-radius:10px;border-color:var(--navy);color:var(--navy);background:#fff}
+.steps a.active .dot.t{background:var(--navy);border-color:var(--navy);color:#ffc24d}
+.steps a.done .dot.t{background:var(--green);border-color:var(--green);color:#fff}
+.mflow.tech{margin-top:0}
+.mnode.t i{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.sec-head .num.t{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.viewbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px 8px 16px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);margin-top:-36px}
+.viewbar .vb-t{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.vb{padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;color:var(--text);border:1px solid transparent;background:var(--bg);transition:background .3s ease,color .3s ease,border-color .3s ease}
+.vb:hover{border-color:var(--blue-line);color:var(--blue)}
+.vb.on{background:var(--navy);color:#fff}
+body.mode-exec .p2{display:none!important}
+body.mode-tech .p1{display:none!important}
+.part-banner{position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;padding:28px 30px;border-radius:22px;background:linear-gradient(135deg,var(--navy),#1d3a8a);color:#dbe5ff}
+.part-banner::after{content:"";position:absolute;right:-90px;top:-110px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,77,.22),transparent 68%);pointer-events:none}
+.part-banner .pb-k{display:inline-block;padding:3px 11px;border-radius:99px;background:#ffc24d;color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.part-banner h2{color:#fff;font-size:24px;line-height:1.25;font-weight:800;letter-spacing:-.015em;margin-bottom:6px}
+.part-banner p{max-width:640px;font-size:14.5px;color:#c6d3f5}
+.part-banner>div{position:relative;flex:1 1 380px}
+.part-banner .pb-skip{position:relative;flex:0 1 auto;font-size:12.5px;color:#ffc24d;font-weight:600}
+.tl{position:relative;display:flex;flex-direction:column;gap:18px}
+.tl::before{content:"";position:absolute;left:19px;top:20px;bottom:20px;width:2px;background:var(--line-2)}
+.tl-i{position:relative;display:flex;gap:16px;align-items:flex-start}
+.tl-n{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#ffc24d;display:grid;place-items:center;font-size:14px;font-weight:800;flex:none;box-shadow:0 0 0 5px var(--bg)}
+.tl-b{flex:1;min-width:0;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.tl-b h4{font-size:15.5px;color:var(--ink);font-weight:700;margin:2px 0 4px}
+.tl-b p{font-size:13.5px;color:var(--text);line-height:1.55}
+.tl-b .branches{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.tl-b .branches .node{flex-direction:column}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+.tbl{width:100%;min-width:620px;border-collapse:collapse;font-size:13px;line-height:1.5}
+.tbl th{text-align:left;padding:10px 14px;background:var(--navy);color:#fff;font-weight:600;font-size:12px;letter-spacing:.04em}
+.tbl td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:var(--text)}
+.tbl td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+.code{border-radius:16px;overflow:hidden;background:#0f1b3d;box-shadow:var(--shadow)}
+.code-head{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#0a1330;color:#9fb4e8;font-size:12px;font-weight:600}
+.code-head .dotr{display:flex;gap:5px}
+.code-head .dotr i{width:9px;height:9px;border-radius:50%;background:#33426f}
+.code-head .cl{margin-left:6px}
+.code-head .cbtn{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;background:rgba(255,255,255,.08);color:#dbe5ff;font-size:12px;font-weight:600;transition:background .3s ease}
+.code-head .cbtn:hover{background:rgba(255,255,255,.18)}
+.code pre{margin:0;padding:16px 18px;overflow-x:auto;color:#dbe5ff;font:13px/1.75 Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-variant-ligatures:none;tab-size:2;white-space:pre-wrap;word-break:break-word}
+.code pre .c-k{color:#ffc24d}
+.code pre .c-s{color:#7fe0b6}
+.code pre .c-f{color:#8fb4ff}
+code{font:600 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:1px 6px;border-radius:6px;background:var(--bg);color:var(--navy)}
+.n-hu code{background:#fff}
+.rowcnt{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+@media (max-width:640px){
+  .viewbar{margin-top:-32px}
+  .part-banner{padding:22px 20px}
+  .tl-b .branches{grid-template-columns:1fr}
+  .tl-i{gap:12px}
+  .tl-n{width:34px;height:34px;font-size:13px}
+  .tl::before{left:16px}
+}
+@media print{.code{break-inside:avoid}.tl-b{break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -478,6 +554,13 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
     <li><a href="#sec-4" data-i="3"><span class="dot">04</span><span class="lbl">Làm được gì &amp; nối hệ thống</span></a></li>
     <li><a href="#sec-5" data-i="4"><span class="dot">05</span><span class="lbl">Cần chuẩn bị gì</span></a></li>
     <li><a href="#sec-6" data-i="5"><span class="dot">06</span><span class="lbl">Làm trong 3 bước</span></a></li>
+    <li><a href="#sec-7" data-i="6"><span class="dot">07</span><span class="lbl">AI tự học mỗi cuối ngày</span></a></li>
+    <li class="navsep p2">Phần II · Chi tiết kỹ thuật</li>
+    <li class="p2"><a href="#sec-t1" data-i="7"><span class="dot t">T1</span><span class="lbl">Bộ công cụ (Tech Stack)</span></a></li>
+    <li class="p2"><a href="#sec-t2" data-i="8"><span class="dot t">T2</span><span class="lbl">Luồng dữ liệu từng giây</span></a></li>
+    <li class="p2"><a href="#sec-t3" data-i="9"><span class="dot t">T3</span><span class="lbl">“Bộ não” &amp; kết quả JSON</span></a></li>
+    <li class="p2"><a href="#sec-t4" data-i="10"><span class="dot t">T4</span><span class="lbl">Vòng lặp 18:00 (kỹ thuật)</span></a></li>
+    <li class="p2"><a href="#sec-t5" data-i="11"><span class="dot t">T5</span><span class="lbl">Checklist cài đặt 7 ngày</span></a></li>
   </ol>
   <div class="sbox">
     <div class="pcard">
@@ -494,11 +577,12 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
 
   <!-- ================= HERO ================= -->
   <header class="hero reveal">
-    <span class="eyebrow">Tóm tắt cho Giám đốc · đọc khoảng 3 phút</span>
+    <span class="eyebrow">Tóm tắt cho Giám đốc · có phần đọc nhanh 1 phút</span>
     <h1>Biến việc lặp lại hằng ngày thành <em>“nhân viên AI”</em> làm việc 24/7</h1>
     <p class="lead">AI không thay bạn ra quyết định. Nó gánh phần việc thô, lặp đi lặp lại. Nhân viên của bạn chỉ cần duyệt kết quả và xử lý những ca khó.</p>
     <div class="hero-actions no-print">
       <a class="btn btn-primary" href="#sec-6"><svg class="i"><use href="#i-play"/></svg>Xem ngay lộ trình 3 bước</a>
+      <a class="btn btn-ghost" href="#sec-t1"><svg class="i"><use href="#i-code"/></svg>Chi tiết kỹ thuật</a>
       <button class="btn btn-ghost" data-act="copy"><svg class="i"><use href="#i-copy"/></svg>Sao chép bản tóm tắt</button>
     </div>
 
@@ -521,7 +605,18 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
           <a class="mnode" href="#sec-3"><i>03</i>4 nguyên tắc</a><span class="link"></span>
           <a class="mnode" href="#sec-4"><i>04</i>Nối hệ thống</a><span class="link"></span>
           <a class="mnode" href="#sec-5"><i>05</i>Chuẩn bị</a><span class="link"></span>
-          <a class="mnode end" href="#sec-6"><i>06</i>Làm 3 bước</a>
+          <a class="mnode" href="#sec-6"><i>06</i>Làm 3 bước</a><span class="link"></span>
+          <a class="mnode end" href="#sec-7"><i>07</i>AI tự học</a>
+        </div>
+      </div>
+      <div class="mini-title p2" style="margin:20px 0 12px">Phần II · Chi tiết kỹ thuật cho người triển khai</div>
+      <div class="map-wrap p2">
+        <div class="mflow tech">
+          <a class="mnode t" href="#sec-t1"><i>T1</i>Bộ công cụ</a><span class="link"></span>
+          <a class="mnode t" href="#sec-t2"><i>T2</i>Luồng dữ liệu</a><span class="link"></span>
+          <a class="mnode t" href="#sec-t3"><i>T3</i>Bộ não &amp; JSON</a><span class="link"></span>
+          <a class="mnode t" href="#sec-t4"><i>T4</i>Vòng lặp 18:00</a><span class="link"></span>
+          <a class="mnode t" href="#sec-t5"><i>T5</i>Cài đặt 7 ngày</a>
         </div>
       </div>
       <div class="legend" aria-label="Chú thích màu">
@@ -533,8 +628,15 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
     </div>
   </header>
 
+  <div class="viewbar no-print reveal" role="group" aria-label="Chế độ xem">
+    <span class="vb-t">Chế độ xem</span>
+    <button class="vb on" data-mode="all" type="button">Toàn bộ</button>
+    <button class="vb" data-mode="exec" type="button">Tóm tắt cho Giám đốc</button>
+    <button class="vb" data-mode="tech" type="button">Chi tiết kỹ thuật</button>
+  </div>
+
   <!-- ================= SECTION 1 ================= -->
-  <section id="sec-1">
+  <section id="sec-1" class="p1">
     <div class="sec-head reveal">
       <div class="num">01</div>
       <div><h2>AI giúp gì cho công ty?</h2><p>Làm nhanh hơn, tốn ít công hơn, nhưng vẫn cần người chịu trách nhiệm</p></div>
@@ -584,7 +686,7 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   </section>
 
   <!-- ================= SECTION 2 ================= -->
-  <section id="sec-2">
+  <section id="sec-2" class="p1">
     <div class="sec-head reveal">
       <div class="num">02</div>
       <div><h2>Nhân viên AI trực 24/7</h2><p>Giải quyết cảnh nhân viên quá tải vì trả lời tin nhắn và lọc form cả ngày</p></div>
@@ -647,7 +749,7 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   </section>
 
   <!-- ================= SECTION 3 ================= -->
-  <section id="sec-3">
+  <section id="sec-3" class="p1">
     <div class="sec-head reveal">
       <div class="num">03</div>
       <div><h2>4 nguyên tắc cốt lõi khi đưa AI vào công ty</h2><p>Góc nhìn chiến lược của Dương Võ (CAIO)</p></div>
@@ -705,7 +807,7 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   </section>
 
   <!-- ================= SECTION 4 ================= -->
-  <section id="sec-4">
+  <section id="sec-4" class="p1">
     <div class="sec-head reveal">
       <div class="num">04</div>
       <div><h2>AI làm được gì &amp; nối vào hệ thống thế nào</h2><p>Phạm vi hỗ trợ, lợi ích khi nâng cấp gói và 3 cách kết nối</p></div>
@@ -797,13 +899,16 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
           <div class="term"><b>SOP</b><span>Quy trình chuẩn viết ra giấy: làm việc X thì làm từng bước thế nào.</span></div>
           <div class="term"><b>AI Agent</b><span>Nhân viên AI được giao một việc cụ thể và tự làm theo quy tắc.</span></div>
           <div class="term"><b>Make / Zapier</b><span>Công cụ như người đưa thư tự động: thấy tin mới thì chuyển đến đúng chỗ.</span></div>
+          <div class="term"><b>Kho kiến thức (Knowledge Base)</b><span>Cuốn sổ chung nơi AI tra cứu cách trả lời. Viết thêm vào đây thì hôm sau AI biết thêm.</span></div>
+          <div class="term"><b>Dấu vết làm việc (Activity Logs)</b><span>Lịch sử tin nhắn, đơn hàng, ghi chú mà hệ thống tự lưu lại khi nhân viên làm việc.</span></div>
+          <div class="term"><b>Vector Database</b><span>Kho tra cứu thông minh: tìm đúng đoạn kiến thức theo ý nghĩa, không chỉ theo từ khóa.</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================= SECTION 5 ================= -->
-  <section id="sec-5">
+  <section id="sec-5" class="p1">
     <div class="sec-head reveal sec5-head">
       <div style="display:flex;gap:14px;align-items:center">
         <div class="num">05</div>
@@ -864,7 +969,7 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   </section>
 
   <!-- ================= SECTION 6 ================= -->
-  <section id="sec-6">
+  <section id="sec-6" class="p1">
     <div class="sec-head reveal">
       <div class="num">06</div>
       <div><h2>Làm trong 3 bước</h2><p>Từ lúc chọn việc đến lúc bật chạy tự động 24/7</p></div>
@@ -906,21 +1011,380 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
         </div>
         <div class="loop" aria-label="Nếu chưa đạt thì quay lại bước 2"><span><svg class="i"><use href="#i-repeat"/></svg>Chưa đạt? Quay lại Bước 2 chỉnh “sổ tay”</span></div>
       </div>
+    </div>
+  </section>
 
-      <div class="cta reveal">
-        <div>
-          <div class="k">Sẵn sàng khởi động</div>
-          <h4>Việc cần làm tiếp theo của Giám đốc</h4>
-          <p>Chọn <strong>1 việc lặp lại đầu tiên</strong> trong doanh nghiệp (kèm tài liệu mẫu) để bắt đầu Bước 01.</p>
+  <!-- ================= SECTION 7 ================= -->
+  <section id="sec-7" class="p1">
+    <div class="sec-head reveal">
+      <div class="num">07</div>
+      <div><h2>AI tự học mỗi cuối ngày</h2><p>Nâng cấp thêm cho hệ thống ở phần 06: báo cáo cuối ngày cho Giám đốc, nhân viên AI giỏi lên mỗi ngày</p></div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>AI không nhìn màn hình của nhân viên. Nó học từ <strong>dấu vết làm việc</strong> đã được ghi lại (tin nhắn, đơn chốt, ghi chú trên CRM). Giống như trưởng ca cuối ngày đọc lại sổ giao ca, rút ra bài học, rồi viết thêm vào cuốn sổ tay chung cho ngày mai.</span></div>
+
+    <div class="sec-body">
+      <div class="grid g3">
+        <div class="card reveal">
+          <div class="ico blue"><svg class="i"><use href="#i-target"/></svg></div>
+          <div class="kicker blue">Mục tiêu</div>
+          <h3>Tự tổng hợp và tự học</h3>
+          <p>Hệ thống AI tự tổng hợp hiệu suất cuối ngày và tự bổ sung kiến thức mới từ cách làm việc thực tế của nhân sự, <strong>không cần ai ngồi dạy lại thủ công</strong>.</p>
         </div>
-        <button class="btn btn-cta no-print" data-act="copy"><svg class="i"><use href="#i-copy"/></svg>Sao chép bản tóm tắt</button>
+        <div class="card reveal">
+          <div class="ico green"><svg class="i"><use href="#i-check-circle"/></svg></div>
+          <div class="kicker green">Làm được không</div>
+          <h3>Làm được bằng công nghệ hiện có</h3>
+          <p>Kết hợp <strong>Gemini API</strong> với công cụ tự động hóa như Make hoặc Zapier. Không cần phát minh gì mới.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico amber"><svg class="i"><use href="#i-clock"/></svg></div>
+          <div class="kicker amber">Mức độ phức tạp</div>
+          <h3>Trung bình</h3>
+          <p>Tốn công nhất là lúc nối đường ống ban đầu (khoảng <strong>3–5 ngày</strong>). Sau đó hệ thống chạy ngầm, gần như không cần người can thiệp.</p>
+        </div>
+      </div>
+
+      <div class="note warn reveal"><svg class="i"><use href="#i-alert"/></svg><span><strong>Điều kiện bắt buộc:</strong> mọi việc tư vấn, chốt đơn, xử lý công việc của nhân viên phải được <strong>ghi lại trên hệ thống số</strong> (CRM, chat, form, Sheet), không làm ngoài lề. Việc không được ghi lại thì AI không thể học.</span></div>
+
+      <div class="card reveal">
+        <div class="panel-title"><svg class="i"><use href="#i-bulb"/></svg>Bên trong hệ thống: AI học như thế nào?</div>
+        <p class="panel-sub">Ba sơ đồ dưới đây: cách AI học, một ngày chạy của hệ thống, và cơ chế an toàn.</p>
+
+        <div class="api">
+          <div class="api-head"><span class="tag navy">Cách học</span><h4>AI đọc lại dấu vết làm việc rồi tự rút bài học</h4></div>
+          <div class="flow-wrap"><div class="flow">
+            <div class="node"><span class="ni"><svg class="i"><use href="#i-users"/></svg></span><div><b>Nhân viên làm việc bình thường</b><small>Chat với khách, cập nhật đơn trên CRM, gửi báo giá. Hệ thống tự lưu lại.</small></div></div>
+            <span class="link"></span>
+            <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-bot"/></svg></span><div><b>AI đọc lại cuối ngày</b><small>So câu AI trả lời với câu của nhân viên thật, tìm chỗ khác biệt hoặc hay hơn.</small></div></div>
+            <span class="link"></span>
+            <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-eye"/></svg></span><div><b>Tìm tình huống mới</b><small>Những tình huống chưa có trong kịch bản cũ.</small></div></div>
+            <span class="link"></span>
+            <div class="node n-ok"><span class="ni"><svg class="i"><use href="#i-book"/></svg></span><div><b>Ghi vào Kho kiến thức</b><small>Quy tắc mới được ghi thêm để áp dụng từ ngày hôm sau.</small></div></div>
+          </div></div>
+          <details class="more"><summary>Chi tiết kỹ thuật</summary><div class="body">AI không quan sát màn hình nhân viên mà học qua <strong>Dấu vết dữ liệu (Activity Logs)</strong>. Cuối ngày AI đọc lại toàn bộ dữ liệu để: (1) so sánh câu trả lời của AI với câu trả lời của nhân viên thật; (2) trích xuất các tình huống mới chưa có trong kịch bản cũ; (3) tự động ghi bổ sung quy tắc mới vào <strong>Kho kiến thức (Knowledge Base)</strong> để áp dụng cho ngày hôm sau.</div></details>
+        </div>
+
+        <div class="api">
+          <div class="api-head"><span class="tag navy">Mỗi ngày</span><h4>Hệ thống tự chạy ngầm từ 18:00, không cần ai bấm nút</h4></div>
+          <div class="flow-wrap"><div class="flow">
+            <div class="node"><span class="ni"><svg class="i"><use href="#i-database"/></svg></span><div><span class="when">18:00</span><b>Gom dữ liệu</b><small>Quét tin nhắn mới, đơn chốt, đơn hủy, ghi chú nhân viên từ CRM, kênh chat và form.</small><span class="tool">Make.com hoặc Zapier</span></div></div>
+            <span class="link"></span>
+            <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-bot"/></svg></span><div><span class="when">18:05</span><b>AI phân tích</b><small>Đếm khách và ca chậm, tìm chỗ nhân viên lúng túng, rút ra cách chốt đơn hay.</small><span class="tool">Gemini API</span></div></div>
+            <span class="link"></span>
+            <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-book"/></svg></span><div><span class="when">18:10</span><b>Nâng cấp “bộ não”</b><small>Ghi mẫu câu và quy tắc mới vào kho kiến thức, sáng mai AI trực chat dùng ngay.</small><span class="tool">Google Docs / Sheets / Vector Database</span></div></div>
+            <span class="link"></span>
+            <div class="node n-ok"><span class="ni"><svg class="i"><use href="#i-send"/></svg></span><div><span class="when">18:15</span><b>Báo cáo cho Giám đốc</b><small>Một tin nhắn tóm tắt ngắn gọn, dưới 15 dòng.</small><span class="tool">Email / Zalo / Telegram</span></div></div>
+          </div></div>
+          <details class="more"><summary>AI làm 3 việc ở bước phân tích</summary><div class="body"><strong>Đo lường:</strong> đếm số lượng khách, tỷ lệ phản hồi, các ca bị chậm trễ.<br><strong>Phát hiện lỗ hổng:</strong> tìm câu khách hỏi mà nhân viên trả lời lúng túng, hoặc khách từ chối mua.<br><strong>Học cách làm hay:</strong> trích các đoạn hội thoại chốt đơn thành công, đóng gói thành mẫu câu chuẩn.</div></details>
+        </div>
+
+        <div class="api">
+          <div class="api-head"><span class="tag navy">An toàn</span><h4>Tránh để AI học nhầm: có bước “Chờ duyệt”</h4></div>
+          <div class="flow-wrap"><div class="flow fork">
+            <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-bot"/></svg></span><div><b>Quy tắc mới AI vừa rút ra</b><small>Từ dữ liệu làm việc trong ngày</small></div></div>
+            <span class="link plain"></span>
+            <div class="stack">
+              <div class="node n-hu"><span class="ni"><svg class="i"><use href="#i-user-check"/></svg></span><div><b>Chờ duyệt</b><small>Người xem trước, đồng ý thì mới áp dụng</small></div></div>
+              <div class="node n-ok"><span class="ni"><svg class="i"><use href="#i-check-circle"/></svg></span><div><b>Áp dụng ngay</b><small>Chỉ với nhóm câu hỏi thông thường</small></div></div>
+            </div>
+          </div></div>
+          <p class="fit"><b>Gợi ý khi mới bắt đầu:</b> những tuần đầu nên để mọi quy tắc mới ở trạng thái “Chờ duyệt”, khi thấy AI học ổn mới mở rộng việc áp dụng ngay.</p>
+        </div>
+      </div>
+
+      <div class="grid g2" style="align-items:start">
+        <div class="card reveal">
+          <div class="panel-title"><svg class="i"><use href="#i-send"/></svg>Giám đốc nhận được gì mỗi chiều?</div>
+          <p class="panel-sub">Một tin nhắn dưới 15 dòng qua Email, Zalo hoặc Telegram. Dưới đây là hình dạng minh họa.</p>
+          <div class="report">
+            <div class="report-head"><svg class="i"><use href="#i-send"/></svg>Báo cáo cuối ngày<small>18:15</small></div>
+            <div class="report-body">
+              <div><b>Chỉ số trong ngày</b>Tổng khách tiếp nhận · Đã xử lý · Tồn đọng</div>
+              <div><b>Vấn đề nổi cộm</b>Khách đang phàn nàn hoặc hỏi nhiều nhất về điều gì</div>
+              <div><b>Nâng cấp hệ thống</b>AI vừa tự học thêm bao nhiêu quy tắc mới từ đội ngũ</div>
+            </div>
+          </div>
+        </div>
+        <div class="stackcol">
+          <div class="card reveal">
+            <div class="panel-title"><svg class="i" style="color:var(--green)"><use href="#i-trend"/></svg>Công ty được gì</div>
+            <ul class="list g">
+              <li><span class="li"><svg class="i"><use href="#i-eye"/></svg></span><div><b>Với Giám đốc</b><span class="d">Nhận báo cáo tổng kết tự động mỗi cuối ngày, thấy ngay điểm nghẽn vận hành.</span></div></li>
+              <li><span class="li"><svg class="i"><use href="#i-users"/></svg></span><div><b>Với vận hành</b><span class="d">AI Agent ngày càng thông minh hơn nhờ học cách xử lý thực tế của đội ngũ giỏi nhất.</span></div></li>
+            </ul>
+          </div>
+          <div class="card warn reveal">
+            <div class="panel-title"><svg class="i" style="color:var(--rose)"><use href="#i-alert"/></svg>Cần lưu ý</div>
+            <ul class="list r">
+              <li><span class="li"><svg class="i"><use href="#i-file"/></svg></span><div><b>Chỉ học được từ việc đã ghi lại</b><span class="d">Việc làm ngoài hệ thống (gọi điện, nhắn riêng) thì AI không thấy.</span></div></li>
+              <li><span class="li"><svg class="i"><use href="#i-shield"/></svg></span><div><b>AI có thể học nhầm</b><span class="d">Kể cả học cả thói quen chưa tốt của nhân viên, nên cần bước “Chờ duyệt”.</span></div></li>
+              <li><span class="li"><svg class="i"><use href="#i-database"/></svg></span><div><b>Dữ liệu đi qua dịch vụ AI bên ngoài</b><span class="d">Nên chỉ gửi phần cần thiết và cho nhân viên biết hệ thống đang ghi nhận.</span></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipe-wrap reveal">
+        <div class="mini-title">Lộ trình triển khai thực tế · 3 giai đoạn</div>
+        <div class="pipe">
+          <article class="step">
+            <div>
+              <div class="step-top"><span class="stag">GIAI ĐOẠN 1</span><span class="who">Ngày 1–2</span></div>
+              <h3>Chuẩn hóa đầu vào</h3>
+              <p>Kiểm tra xem dữ liệu chat và trạng thái khách hàng đã <strong>đổ về một nơi tập trung</strong> chưa (như Zoho CRM hoặc Google Sheets).</p>
+            </div>
+            <div class="out"><span>Kết quả: Dữ liệu nằm một chỗ</span><svg class="i"><use href="#i-arrow-right"/></svg></div>
+          </article>
+          <span class="link"></span>
+          <article class="step s-ai">
+            <div>
+              <div class="step-top"><span class="stag">GIAI ĐOẠN 2</span><span class="who" style="color:var(--blue)">Ngày 3–4</span></div>
+              <h3>Nối đường ống &amp; viết “bộ não”</h3>
+              <p>Dựng kịch bản tự động trên Make.com hoặc Zapier, <strong>kết nối Gemini API</strong> và cài cấu trúc file Kho kiến thức.</p>
+            </div>
+            <div class="out"><span>Kết quả: Đường ống chạy được</span><svg class="i"><use href="#i-arrow-right"/></svg></div>
+          </article>
+          <span class="link"></span>
+          <article class="step s-final">
+            <div>
+              <div class="step-top"><span class="stag">GIAI ĐOẠN 3</span><span class="who">Ngày 5–7</span></div>
+              <h3>Chạy thử &amp; tinh chỉnh</h3>
+              <p>Cho hệ thống <strong>chạy ngầm cuối ngày 3 ngày liên tiếp</strong>, kiểm tra độ chính xác của báo cáo và chỉnh định dạng theo đúng ý Giám đốc trước khi vận hành chính thức.</p>
+            </div>
+            <div class="out"><span>Kết quả: Vận hành chính thức</span><svg class="i"><use href="#i-check-circle"/></svg></div>
+          </article>
+        </div>
+        <p class="cap2">Phần nối đường ống mất khoảng 3–5 ngày, cộng thêm vài ngày chạy thử nên cả lộ trình khoảng một tuần.</p>
       </div>
     </div>
   </section>
 
+
+  <!-- ================= PHẦN II ================= -->
+  <div class="part-banner p2 reveal" id="part-2">
+    <div>
+      <span class="pb-k">Phần II</span>
+      <h2>Chi tiết kỹ thuật: hệ thống được lắp như thế nào</h2>
+      <p>Dành cho người trực tiếp cài đặt (nhân sự kỹ thuật, đơn vị triển khai). Mỗi mục tương ứng một mục ở Phần I, nhưng đi sâu vào công cụ, luồng chạy và đoạn lệnh mẫu.</p>
+    </div>
+    <div class="pb-skip">Giám đốc có thể bỏ qua Phần II và quay lại đọc khi cần giao việc cho đội kỹ thuật.</div>
+  </div>
+
+  <!-- T1 -->
+  <section id="sec-t1" class="p2">
+    <div class="sec-head reveal">
+      <div class="num t">T1</div>
+      <div><h2>Bộ công cụ cần có (Tech Stack)</h2><p>Ứng với mục 01 và 04: dùng công cụ nào để AI làm việc thật</p></div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>Hệ thống gồm <strong>5 lớp nối nhau</strong>, giống một quầy dịch vụ: cửa tiếp khách, người điều phối, người chuyên môn (AI), cuốn sổ tra cứu và sổ khách hàng. Phần lớn công ty đã có sẵn lớp đầu và lớp cuối.</span></div>
+    <div class="sec-body">
+      <div class="card reveal">
+        <div class="panel-title"><svg class="i"><use href="#i-layers"/></svg>5 lớp của hệ thống, đi từ khách hàng đến nhân viên</div>
+        <p class="panel-sub">Dữ liệu chảy từ trái sang phải. Công cụ nêu tên là gợi ý phổ biến, có thể thay bằng công cụ tương đương.</p>
+        <div class="flow-wrap"><div class="flow">
+          <div class="node"><span class="ni"><svg class="i"><use href="#i-globe"/></svg></span><div><b>1. Cổng tiếp nhận</b><small>Nơi khách gửi yêu cầu: form báo giá, tin nhắn, fanpage.</small><span class="tool">Shopify · Web Form · Zalo OA · Fanpage</span></div></div>
+          <span class="link"></span>
+          <div class="node"><span class="ni"><svg class="i"><use href="#i-plug"/></svg></span><div><b>2. Trạm điều phối</b><small>Nhận tin báo có khách mới, chuyển cho AI, rồi đưa kết quả đi đúng nơi.</small><span class="tool">Make.com · Zapier · n8n</span></div></div>
+          <span class="link"></span>
+          <div class="node n-ai"><span class="ni"><svg class="i"><use href="#i-bot"/></svg></span><div><b>3. Bộ não AI</b><small>Đọc yêu cầu, tra bảng giá và quy tắc, soạn câu trả lời, phân loại khách.</small><span class="tool">Google Gemini API (Flash / Pro)</span></div></div>
+          <span class="link"></span>
+          <div class="node"><span class="ni"><svg class="i"><use href="#i-book"/></svg></span><div><b>4. Kho tri thức</b><small>Cuốn sổ bảng giá, thông số, câu hỏi–đáp mẫu. Người sửa tay được.</small><span class="tool">Google Docs · Google Sheets</span></div></div>
+          <span class="link"></span>
+          <div class="node n-ok"><span class="ni"><svg class="i"><use href="#i-database"/></svg></span><div><b>5. Sổ khách &amp; chốt đơn</b><small>Tạo hồ sơ khách, gắn nhãn, báo cho nhân viên bán hàng.</small><span class="tool">Zoho CRM · Telegram · Email</span></div></div>
+        </div></div>
+        <details class="more"><summary>Chi tiết kỹ thuật &amp; chi phí từng lớp</summary><div class="body">
+          <div class="tbl-wrap"><table class="tbl">
+            <thead><tr><th>Lớp</th><th>Công cụ</th><th>Nhiệm vụ kỹ thuật</th><th>Chi phí / yêu cầu</th></tr></thead>
+            <tbody>
+              <tr><td>1. Frontend</td><td>Shopify, Web Form, Zalo OA, Fanpage</td><td>Thu yêu cầu báo giá, form tư vấn, tin nhắn hỏi sản phẩm.</td><td>Hạ tầng sẵn có của doanh nghiệp</td></tr>
+              <tr><td>2. Middleware</td><td>Make.com, Zapier, n8n</td><td>Bắt sự kiện (Webhook) khi có khách mới, gom dữ liệu gửi AI, nhận kết quả và chia luồng.</td><td>No-code / low-code, cần tài khoản trả phí khi lưu lượng tăng</td></tr>
+              <tr><td>3. AI Engine</td><td>Google Gemini API (Flash / Pro)</td><td>Đọc yêu cầu, đối chiếu bảng giá và System Prompt, trả câu trả lời và nhãn phân loại.</td><td>API Key từ Google AI Studio hoặc Vertex AI, tính phí theo lượng dùng</td></tr>
+              <tr><td>4. Memory</td><td>Google Docs, Google Sheets</td><td>Lưu bảng giá, thông số, khoảng 20 câu Q&amp;A mẫu; nơi AI ghi thêm kiến thức mới cuối ngày.</td><td>Google Workspace, dễ sửa bằng tay</td></tr>
+              <tr><td>5. CRM</td><td>Zoho CRM, Telegram, Email</td><td>Tạo Lead, gắn nhãn (VIP / lẻ / cần gọi gấp), báo nhân viên chốt đơn.</td><td>Zoho CRM API và bot thông báo nội bộ</td></tr>
+            </tbody>
+          </table></div>
+        </div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- T2 -->
+  <section id="sec-t2" class="p2">
+    <div class="sec-head reveal">
+      <div class="num t">T2</div>
+      <div><h2>Luồng dữ liệu từng giây (chạy 24/7)</h2><p>Ứng với mục 02: chuyện gì xảy ra khi một khách điền form hoặc nhắn tin</p></div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>Từ lúc khách bấm gửi đến lúc có hồ sơ trên CRM chỉ khoảng <strong>vài giây</strong>. Con số “giây” dưới đây là ước lượng để dễ hình dung, thời gian thực tế phụ thuộc đường truyền và độ dài câu hỏi.</span></div>
+    <div class="sec-body">
+      <div class="card reveal">
+        <div class="panel-title"><svg class="i"><use href="#i-clock"/></svg>Một yêu cầu đi qua 4 chặng</div>
+        <p class="panel-sub">Chặng 3 là nơi hệ thống tự quyết định: tự trả lời hay chuyển cho người thật.</p>
+        <div class="tl">
+          <div class="tl-i">
+            <div class="tl-n">1</div>
+            <div class="tl-b"><span class="when">Giây 0 · Kích hoạt</span><h4>Khách điền form hoặc nhắn tin</h4><p>Dữ liệu thô (tên, số điện thoại, nhu cầu, số lượng, ghi chú) được gửi ngay về trạm điều phối Make.com qua Webhook.</p></div>
+          </div>
+          <div class="tl-i">
+            <div class="tl-n">2</div>
+            <div class="tl-b"><span class="when">Giây 1 · Nạp ngữ cảnh</span><h4>Đọc bảng giá và quy tắc mới nhất</h4><p>Make.com mở file Google Docs/Sheets để AI luôn dùng giá, tồn kho, chính sách chiết khấu <strong>của hôm nay</strong>, không trả lời theo trí nhớ chung chung.</p></div>
+          </div>
+          <div class="tl-i">
+            <div class="tl-n">3</div>
+            <div class="tl-b"><span class="when">Giây 2–3 · AI quyết định</span><h4>Gemini phân loại khách và soạn phản hồi</h4><p>Tỷ lệ chia luồng tùy từng ngành và từng cách đặt quy tắc; con số dưới đây chỉ là ví dụ minh họa.</p>
+              <div class="branches">
+                <div class="node n-ok"><b>Nhánh A · Ca tiêu chuẩn (ví dụ ~80%)</b><small>Khách hỏi giá lẻ, thông số cơ bản. AI tính báo giá sơ bộ và trả lời ngay qua Email/Zalo.</small></div>
+                <div class="node n-hu"><b>Nhánh B · Ca VIP / phức tạp (ví dụ ~20%)</b><small>Đơn dự án lớn, yêu cầu đặc thù hoặc khiếu nại. AI gắn cờ <code>ESCALATE_HUMAN</code>, giữ chân khách lịch sự và báo gấp nhân viên thật.</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="tl-i">
+            <div class="tl-n">4</div>
+            <div class="tl-b"><span class="when">Giây 4 · Đồng bộ</span><h4>Ghi hồ sơ vào Zoho CRM và lưu nhật ký</h4><p>Tạo Lead kèm bản tóm tắt nhu cầu do AI viết sẵn, để nhân viên bán hàng gọi là nắm được tình hình, đỡ phải hỏi lại từ đầu. Nhật ký này cũng là nguyên liệu cho vòng tự học cuối ngày (T4).</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T3 -->
+  <section id="sec-t3" class="p2">
+    <div class="sec-head reveal">
+      <div class="num t">T3</div>
+      <div><h2>“Bộ não” AI &amp; kết quả dạng JSON</h2><p>Ứng với mục 03 và 05: đóng gói quy tắc công ty thành bộ lệnh cho API</p></div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>Có hai thứ cần chuẩn bị: <strong>(1) cuốn sổ quy tắc</strong> dặn AI được làm gì, không được làm gì; <strong>(2) mẫu phiếu trả lời cố định</strong> để phần mềm phía sau đọc được, giống phiếu có sẵn các ô “loại khách”, “mức khẩn”, “cần người không”.</span></div>
+    <div class="sec-body">
+      <div class="note warn reveal"><svg class="i"><use href="#i-alert"/></svg><span><strong>Đây là mẫu minh họa.</strong> Các con số như “dưới 50 sản phẩm”, “trong 15 phút” chỉ là ví dụ. Hãy thay bằng quy tắc thật của công ty (ngưỡng đơn lớn, thời gian phản hồi, tên công ty, tên file bảng giá) trước khi dùng.</span></div>
+
+      <div class="code reveal">
+        <div class="code-head"><span class="dotr"><i></i><i></i><i></i></span><span class="cl">1 · Mẫu System Instructions (nạp vào Gemini)</span><button class="cbtn no-print" type="button" data-copycode><svg class="i"><use href="#i-copy"/></svg>Sao chép</button></div>
+<pre>[VAI TRÒ]
+Bạn là Chuyên viên Tư vấn Kỹ thuật &amp; Báo giá của Công ty [Tên Công Ty].
+Giọng văn: chuyên nghiệp, ngắn gọn, đi thẳng vào giải pháp.
+
+[DỮ LIỆU NGUỒN]
+Chỉ sử dụng thông tin trong {{Knowledge_Base_Docs}} và {{Bang_Gia_Hien_Hanh}}.
+Tuyệt đối KHÔNG tự bịa giá hoặc thông số ngoài tài liệu.
+
+[QUY TẮC PHÂN LOẠI &amp; XỬ LÝ]
+1. Nếu khách hỏi sản phẩm có sẵn và số lượng &lt; 50:
+   tính tổng tiền theo bảng giá + phí ship chuẩn, trả lời ngay.
+2. Nếu số lượng &gt;= 50 hoặc khách là Nhà thầu/Đại lý:
+   gắn cờ "VIP_PROJECT", không báo giá lẻ,
+   xin SĐT/Email để Trưởng phòng kinh doanh gửi báo giá chiết khấu riêng.
+3. Nếu khách khiếu nại hoặc hỏi ngoài phạm vi:
+   gắn cờ "HUMAN_NEEDED", xin lỗi lịch sự
+   và báo nhân viên kỹ thuật sẽ liên hệ.</pre>
+      </div>
+
+      <div class="code reveal">
+        <div class="code-head"><span class="dotr"><i></i><i></i><i></i></span><span class="cl">2 · Kết quả JSON mong muốn (để Make.com đẩy vào Zoho CRM)</span><button class="cbtn no-print" type="button" data-copycode><svg class="i"><use href="#i-copy"/></svg>Sao chép</button></div>
+<pre>{
+  "customer_tier": "VIP_PROJECT",
+  "intent": "Yêu cầu báo giá dự án số lượng lớn",
+  "extracted_products": ["Mã SP-01 (SL: 120)"],
+  "requires_human": true,
+  "urgency_level": "HIGH",
+  "reply_to_customer": "Chào anh/chị, với số lượng 120 bộ SP-01 cho dự án, bộ phận Dự án sẽ áp dụng chính sách chiết khấu riêng. Chuyên viên phụ trách sẽ gửi bảng báo giá chi tiết qua Zalo/Email của anh/chị sớm nhất có thể ạ.",
+  "crm_internal_note": "Khách dự án 120 bộ SP-01. Sale cần gọi sớm báo giá chiết khấu bậc 2."
+}</pre>
+      </div>
+
+      <div class="grid g2">
+        <div class="card reveal">
+          <div class="ico green"><svg class="i"><use href="#i-check-circle"/></svg></div>
+          <div class="kicker green">Vì sao ép dạng JSON</div>
+          <h3>Phần mềm phía sau đọc được ngay</h3>
+          <p>Khi AI trả đúng các trường đã định, Make.com tách từng trường và điền vào đúng ô trên Zoho CRM, thay vì phải “đọc” một đoạn văn tự do. Cách này giảm hẳn lỗi định dạng, nhưng <strong>vẫn nên có bước kiểm tra</strong>: thiếu trường nào thì chuyển cho người xử lý.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico amber"><svg class="i"><use href="#i-shield"/></svg></div>
+          <div class="kicker amber">Chốt chặn an toàn</div>
+          <h3>Khóa phạm vi, có đường lui sang người</h3>
+          <p>Quy tắc “chỉ dùng dữ liệu trong tài liệu” và cờ <code>requires_human</code> giúp AI không tự bịa giá và biết lúc nào phải nhường cho nhân viên. Nên kiểm thử kỹ ở T5 trước khi mở cho khách thật.</p>
+        </div>
+      </div>
+      <details class="more reveal"><summary>Gợi ý đối chiếu trường JSON với ô trên CRM</summary><div class="body">
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Trường JSON</th><th>Gợi ý ô trên CRM</th><th>Dùng để</th></tr></thead>
+          <tbody>
+            <tr><td>customer_tier</td><td>Nhãn / Tag của Lead</td><td>Phân loại VIP, khách lẻ</td></tr>
+            <tr><td>intent</td><td>Nhu cầu (mô tả)</td><td>Cho sale biết khách cần gì</td></tr>
+            <tr><td>extracted_products</td><td>Sản phẩm quan tâm</td><td>Mã và số lượng khách hỏi</td></tr>
+            <tr><td>requires_human, urgency_level</td><td>Mức ưu tiên, thông báo nội bộ</td><td>Quyết định có báo gấp qua Telegram/Email</td></tr>
+            <tr><td>reply_to_customer</td><td>Nội dung gửi khách</td><td>Câu trả lời tự động</td></tr>
+            <tr><td>crm_internal_note</td><td>Ghi chú nội bộ</td><td>Tóm tắt cho nhân viên gọi lại</td></tr>
+          </tbody>
+        </table></div>
+      </div></details>
+    </div>
+  </section>
+
+  <!-- T4 -->
+  <section id="sec-t4" class="p2">
+    <div class="sec-head reveal">
+      <div class="num t">T4</div>
+      <div><h2>Vòng lặp 18:00: góc nhìn kỹ thuật</h2><p>Bổ sung cho mục 07: mỗi chặng nhận gì, trả ra gì</p></div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>Phần giải thích dễ hiểu đã có ở <a href="#sec-7" style="color:var(--blue);font-weight:600">mục 07</a>. Ở đây chỉ nêu phần kỹ thuật: <strong>AI học từ nhật ký dữ liệu</strong>, không “nhìn màn hình” nhân viên.</span></div>
+    <div class="sec-body">
+      <div class="card reveal">
+        <div class="panel-title"><svg class="i"><use href="#i-repeat"/></svg>Bốn chặng chạy ngầm mỗi ngày</div>
+        <p class="panel-sub">Giờ chạy mang tính minh họa, có thể đổi theo giờ làm việc của công ty.</p>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Giờ</th><th>Việc kỹ thuật</th><th>Đầu vào → Đầu ra</th></tr></thead>
+          <tbody>
+            <tr><td>18:00</td><td>Make.com chạy theo lịch hẹn giờ (Cron), quét tin nhắn mới, ca nhân viên thật đã xử lý, trạng thái đơn chốt/hủy trên Zoho CRM.</td><td>Chat thô và nhật ký CRM → bộ dữ liệu trong ngày</td></tr>
+            <tr><td>18:05</td><td>Gemini API đọc toàn bộ nhật ký: tìm câu hỏi mới mà AI chưa biết, rút cách nhân viên giỏi đã trả lời để chốt đơn.</td><td>Bộ dữ liệu → các cặp Q&amp;A và quy tắc đề xuất</td></tr>
+            <tr><td>18:10</td><td>Ghi nối tiếp vào mục “Kiến thức mới chờ duyệt” trong Google Docs (Kho tri thức).</td><td>Quy tắc đề xuất → Kho tri thức đã cập nhật</td></tr>
+            <tr><td>18:15</td><td>Gửi bản tổng kết khoảng 15 dòng qua Zalo/Telegram/Email cho Giám đốc: hiệu suất ngày, lý do khách từ chối nhiều nhất, những gì AI vừa học thêm.</td><td>Kết quả các chặng → báo cáo cuối ngày</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="note reveal"><svg class="i"><use href="#i-shield"/></svg><span><strong>Nên để “Chờ duyệt”:</strong> trong những tuần đầu, kiến thức mới chỉ có hiệu lực sau khi người có trách nhiệm duyệt. Khi thấy AI học đúng ổn định, mới cân nhắc cho áp dụng tự động với nhóm câu hỏi thông thường.</span></div>
+    </div>
+  </section>
+
+  <!-- T5 -->
+  <section id="sec-t5" class="p2">
+    <div class="sec-head reveal sec5-head">
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="num t">T5</div>
+        <div><h2>Checklist cài đặt trong 7 ngày</h2><p>Ứng với mục 06: việc cụ thể cho đội kỹ thuật, từ con số 0 đến chạy thật</p></div>
+      </div>
+      <div class="check-bar no-print">
+        <span>Tiến độ kỹ thuật:</span><span class="badge" id="tech-badge">0 / 6 bước</span>
+        <button id="tech-reset" type="button" title="Đặt lại" aria-label="Đặt lại checklist kỹ thuật"><svg class="i"><use href="#i-reset"/></svg></button>
+      </div>
+    </div>
+    <div class="say reveal"><span class="tagx">Hiểu nhanh</span><span>Sáu đầu việc xếp theo thứ tự. Tick vào từng bước đã xong để theo dõi, tiến độ được lưu ngay trên trình duyệt này.</span></div>
+    <div class="sec-body">
+      <div class="card reveal">
+        <div class="stackcol" style="gap:6px">
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t1"><span class="t"><strong>Ngày 1 · Gom dữ liệu về một mối.</strong> Tạo 1 file Google Docs (Kho tri thức) và 1 file Google Sheets (Bảng giá chuẩn); kiểm tra Zoho CRM đang nhận dữ liệu khách đầy đủ.</span></label>
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t2"><span class="t"><strong>Ngày 2 · Khởi tạo Gemini API và System Prompt.</strong> Lấy API Key trên Google AI Studio, nạp bộ quy tắc (System Instructions) và cấu hình để AI trả về đúng dạng JSON.</span></label>
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t3"><span class="t"><strong>Ngày 3 · Dựng luồng thời gian thực trên Make.com.</strong> Nối Webhook từ form/kênh chat → Gemini API → phản hồi khách → tạo Lead trên Zoho CRM.</span></label>
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t4"><span class="t"><strong>Ngày 4 · Dựng luồng tự học và báo cáo 18:00.</strong> Tạo kịch bản hẹn giờ quét nhật ký CRM/chat → AI rút kinh nghiệm → ghi vào Google Docs → gửi báo cáo cho Giám đốc.</span></label>
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t5"><span class="t"><strong>Ngày 5–6 · Thử với khoảng 20 tình huống thực tế.</strong> Giả lập khách hỏi khó, hỏi sai giá, khiếu nại để kiểm tra việc chuyển cho người thật hoạt động đúng.</span></label>
+          <label class="chk"><input type="checkbox" class="tech-checkbox" data-id="t6"><span class="t"><strong>Ngày 7 · Bật chính thức và theo dõi tuần đầu.</strong> Cho hệ thống chạy tự động 24/7; Giám đốc (hoặc người phụ trách) duyệt mục “Kiến thức mới” AI học được mỗi cuối ngày.</span></label>
+        </div>
+      </div>
+      <div class="note warn reveal"><svg class="i"><use href="#i-alert"/></svg><span><strong>Trước khi bật chính thức:</strong> thông tin khách (tên, số điện thoại, nhu cầu) sẽ đi qua các dịch vụ bên ngoài như Make.com và Gemini API. Hãy kiểm tra điều khoản dữ liệu của từng dịch vụ, chỉ gửi những trường thật cần thiết và cập nhật chính sách bảo mật cho khách. Nếu dùng nội dung cuộc gọi hay ghi âm, cần có sự đồng ý của người được ghi.</span></div>
+    </div>
+  </section>
+
+      <div class="cta reveal p1">
+      <div>
+        <div class="k">Sẵn sàng khởi động</div>
+        <h4>Việc cần làm tiếp theo của Giám đốc</h4>
+        <p>Chọn <strong>1 việc lặp lại đầu tiên</strong> trong doanh nghiệp (kèm tài liệu mẫu) để bắt đầu Bước 01.</p>
+      </div>
+      <button class="btn btn-cta no-print" data-act="copy"><svg class="i"><use href="#i-copy"/></svg>Sao chép bản tóm tắt</button>
+    </div>
+
   <footer class="foot">
     <div><strong>Executive AI Agent Playbook</strong> · Tài liệu chiến lược &amp; lộ trình triển khai tự động hóa doanh nghiệp</div>
-    <div>HTML một file · sẵn sàng đưa lên GitHub Pages</div>
+    <div>HTML một file · Phần I tóm tắt cho Giám đốc · Phần II chi tiết kỹ thuật</div>
   </footer>
 
 </div>
@@ -963,6 +1427,7 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
   function onScroll() {
     var y = window.scrollY + 160, cur = -1;
     sections.forEach(function (s, i) {
+      if (!s.offsetParent) return;
       if (s.getBoundingClientRect().top + window.scrollY <= y) cur = i;
     });
     navLinks.forEach(function (a) {
@@ -1036,6 +1501,77 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
     showToast('Đã đặt lại tiến độ chuẩn bị!');
   });
 
+  /* 5b. Checklist kỹ thuật (Phần II, lưu riêng trong trình duyệt) */
+  var TKEY = 'ai_agent_playbook_tech_v1';
+  var tboxes = $$('.tech-checkbox');
+  function tUpdate() {
+    var n = tboxes.filter(isChecked).length;
+    $('#tech-badge').textContent = n + ' / ' + tboxes.length + ' bước';
+  }
+  function tSave() {
+    try {
+      var st = {};
+      tboxes.forEach(function (b) { st[b.getAttribute('data-id')] = b.checked; });
+      localStorage.setItem(TKEY, JSON.stringify(st));
+    } catch (e) {}
+    tUpdate();
+  }
+  (function () {
+    try {
+      var st = JSON.parse(localStorage.getItem(TKEY) || '{}');
+      tboxes.forEach(function (b) { if (st[b.getAttribute('data-id')]) b.checked = true; });
+    } catch (e) {}
+    tUpdate();
+  })();
+  tboxes.forEach(function (b) { b.addEventListener('change', tSave); });
+  $('#tech-reset').addEventListener('click', function () {
+    tboxes.forEach(function (b) { b.checked = false; });
+    tSave();
+    showToast('Đã đặt lại tiến độ kỹ thuật!');
+  });
+
+  /* 5c. Chế độ xem: Toàn bộ / Tóm tắt Giám đốc / Chi tiết kỹ thuật */
+  var vbs = $$('.vb');
+  function setMode(m, scroll) {
+    document.body.classList.remove('mode-exec', 'mode-tech');
+    if (m !== 'all') document.body.classList.add('mode-' + m);
+    vbs.forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-mode') === m); });
+    if (scroll) { var vb = $('.viewbar'); if (vb) vb.scrollIntoView({ block: 'start' }); }
+    onScroll();
+  }
+  vbs.forEach(function (b) {
+    b.addEventListener('click', function () { setMode(b.getAttribute('data-mode'), true); });
+  });
+  // Bấm link tới phần đang bị ẩn thì tự chuyển về "Toàn bộ"
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#sec-"]');
+    if (!a) return;
+    var t = $(a.getAttribute('href'));
+    if (t && !t.offsetParent) setMode('all', false);
+  });
+
+  /* 5d. Nút sao chép cho khối mã mẫu */
+  function copyText(txt, okMsg) {
+    function fb() {
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.style.cssText = 'position:fixed;left:-9999px';
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      showToast(ok ? okMsg : 'Không sao chép được, vui lòng thử lại.');
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(txt).then(function () { showToast(okMsg); }, fb);
+    } else { fb(); }
+  }
+  $$('[data-copycode]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pre = $('pre', b.closest('.code'));
+      copyText(pre.textContent, 'Đã sao chép đoạn mã mẫu!');
+    });
+  });
+
   /* 6. Copy summary as Markdown */
   var MD = `# LỘ TRÌNH TRIỂN KHAI AI AGENT DOANH NGHIỆP (TÓM TẮT CHO GIÁM ĐỐC)
 
@@ -1080,7 +1616,51 @@ details.more .body{margin-top:8px;padding:12px 14px;background:var(--bg);border-
 ## 6. Làm trong 3 bước
 - **Bước 1 (Bạn làm):** Chọn 1 việc lặp lại + đưa tài liệu mẫu (bảng giá, câu trả lời chuẩn).
 - **Bước 2 (AI làm):** AI soạn "sổ tay" (System Prompt), thiết kế form và code kết nối (Web, Zoho CRM, kênh chat).
-- **Bước 3 (Cùng vận hành):** Chạy thử tình huống thật -> chỉnh sửa -> bật tự động 24/7. Chưa đạt thì quay lại Bước 2.`;
+- **Bước 3 (Cùng vận hành):** Chạy thử tình huống thật -> chỉnh sửa -> bật tự động 24/7. Chưa đạt thì quay lại Bước 2.
+
+## 7. AI tự học mỗi cuối ngày (nâng cấp thêm)
+- **Ý chính:** AI không nhìn màn hình nhân viên, mà học từ dấu vết làm việc đã được ghi lại (chat, CRM, báo giá). Cuối ngày AI so sánh câu trả lời của mình với nhân viên thật, rút ra tình huống mới và ghi vào Kho kiến thức cho ngày mai.
+- **Điều kiện bắt buộc:** Mọi việc tư vấn, chốt đơn phải được ghi lại trên hệ thống số (CRM, chat, form, Sheet).
+- **Chạy ngầm từ 18:00:** 18:00 Gom dữ liệu (Make/Zapier) -> 18:05 AI phân tích (Gemini API) -> 18:10 Cập nhật Kho kiến thức -> 18:15 Gửi báo cáo cho Giám đốc (dưới 15 dòng: chỉ số trong ngày, vấn đề nổi cộm, số quy tắc AI vừa học).
+- **An toàn:** Quy tắc mới để trạng thái "Chờ duyệt" hoặc chỉ áp dụng ngay với nhóm câu hỏi thông thường. Nên để "Chờ duyệt" trong những tuần đầu.
+- **Độ phức tạp:** Trung bình, nối đường ống khoảng 3-5 ngày.
+- **Lộ trình:** Ngày 1-2 chuẩn hóa đầu vào; ngày 3-4 nối đường ống & viết bộ não; ngày 5-7 chạy thử 3 ngày liên tiếp & tinh chỉnh.
+
+---
+
+# PHẦN II: CHI TIẾT KỸ THUẬT (DÀNH CHO NGƯỜI TRIỂN KHAI)
+
+## T1. Bộ công cụ (Tech Stack) - 5 lớp
+1. **Cổng tiếp nhận:** Website Form / Shopify / Zalo OA / Fanpage.
+2. **Trạm điều phối:** Make.com / Zapier / n8n (bắt Webhook, chuyển dữ liệu, chia luồng).
+3. **Bộ não AI:** Google Gemini API (Flash / Pro) cùng System Prompt.
+4. **Kho tri thức:** Google Docs / Google Sheets (bảng giá, thông số, Q&A mẫu; nơi AI ghi thêm kiến thức mới).
+5. **Sổ khách & chốt đơn:** Zoho CRM / Telegram / Email.
+
+## T2. Luồng dữ liệu từng giây (24/7, thời gian là ước lượng)
+1. **Giây 0 (Kích hoạt):** Khách điền form/nhắn tin -> Webhook gửi dữ liệu về Make.com.
+2. **Giây 1 (Ngữ cảnh):** Make.com đọc bảng giá & quy tắc mới nhất từ Google Docs/Sheets.
+3. **Giây 2-3 (AI quyết định):** Gemini phân loại. Nhánh A (ví dụ ~80%): ca tiêu chuẩn, tự báo giá & trả lời ngay. Nhánh B (ví dụ ~20%): VIP/dự án/khiếu nại, gắn cờ ESCALATE_HUMAN, chuyển nhân viên thật.
+4. **Giây 4 (Đồng bộ):** Tạo Lead + tóm tắt nhu cầu trên Zoho CRM, lưu nhật ký phục vụ tự học.
+
+## T3. Bộ não & kết quả JSON
+- **System Instructions:** khóa phạm vi dữ liệu (chỉ dùng tài liệu nội bộ, không tự bịa giá), có quy tắc phân loại khách lẻ / dự án / khiếu nại. Các ngưỡng (ví dụ 50 sản phẩm) chỉ là minh họa, cần thay bằng quy tắc thật.
+- **Kết quả JSON:** customer_tier, intent, extracted_products, requires_human, urgency_level, reply_to_customer, crm_internal_note. Make.com tách từng trường điền vào CRM; vẫn nên có bước kiểm tra khi thiếu trường.
+
+## T4. Vòng lặp 18:00 (góc nhìn kỹ thuật)
+- **18:00:** Make.com chạy theo lịch, gom chat và trạng thái đơn chốt/hủy trên CRM.
+- **18:05:** Gemini đối chiếu, tìm câu hỏi mới, rút cách nhân viên giỏi chốt đơn.
+- **18:10:** Ghi vào mục "Kiến thức mới chờ duyệt" trong Google Docs. Nên để Chờ duyệt trong những tuần đầu.
+- **18:15:** Gửi báo cáo khoảng 15 dòng cho Giám đốc.
+
+## T5. Checklist cài đặt 7 ngày
+1. **Ngày 1:** Tạo Google Docs (Kho tri thức) + Google Sheets (Bảng giá chuẩn); kiểm tra Zoho CRM nhận dữ liệu khách.
+2. **Ngày 2:** Lấy Gemini API Key, nạp System Instructions, cấu hình trả về JSON.
+3. **Ngày 3:** Dựng luồng thời gian thực trên Make.com (Webhook -> Gemini -> phản hồi khách -> tạo Lead).
+4. **Ngày 4:** Dựng luồng tự học & báo cáo 18:00.
+5. **Ngày 5-6:** Thử khoảng 20 tình huống thực tế (khó, sai giá, khiếu nại) để kiểm tra chuyển người thật.
+6. **Ngày 7:** Bật chính thức, theo dõi tuần đầu, duyệt "Kiến thức mới" mỗi cuối ngày.
+- **Lưu ý dữ liệu khách:** kiểm tra điều khoản của Make.com/Gemini, chỉ gửi trường cần thiết, cập nhật chính sách bảo mật; ghi âm cần có sự đồng ý.`;
 
   function copyFallback() {
     var ta = document.createElement('textarea');
